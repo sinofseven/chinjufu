@@ -6,7 +6,8 @@ module Chinjufu
         region: nil,
         stack_name: nil,
         template_file: nil,
-        log_file: nil
+        log_file: nil,
+        verbose: nil
       }
       load_aws_cli_config(options)
       load_env
@@ -44,9 +45,11 @@ module Chinjufu
       key_region = 'region'
       key_stack_name = 'stack-name'
       key_template_file = 'template-file'
+      key_verbose = 'verbose'
       @option[:region] = options[key_region] unless options[key_region].nil?
       @option[:stack_name] = options[key_stack_name] unless options[key_stack_name].nil?
       @option[:template_file] = options[key_template_file] unless options[key_template_file].nil?
+      @option[:verbose] = options[key_verbose] unless options[key_verbose].nil?
     end
 
     def validate_option(is_deploy)

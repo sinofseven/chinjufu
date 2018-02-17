@@ -4,6 +4,7 @@ require 'json'
 require 'aws-sdk-cloudformation'
 require 'aws_config'
 require 'pastel'
+require 'securerandom'
 
 require 'chinjufu/version'
 require 'chinjufu/log'
