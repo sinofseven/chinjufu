@@ -26,6 +26,15 @@ module Chinjufu
       exec_listen_events_failure(listen_result, false)
     end
     
+    def exec_remove(opt, logger)
+      init(opt, logger)
+      stack = stack_info
+      if stack[:is_err] then
+        str = stack[:value].message
+        return if stack_info_failure(str)
+      end
+    end
+    
     private
     def init(opt, logger)
       @log ||= logger
@@ -102,7 +111,7 @@ module Chinjufu
     
     def print_event(event)
       return unless @verbose
-      @log.write_line("#{event.resource_status} #{event.resource_type} #{event.logical_resource_id}")
+      @log.write_line("#{event.resource_status} #{event.resource_type} #{event.logical_resource_id}", is_cfn: true)
     end
     
     def is_finish_event(event)

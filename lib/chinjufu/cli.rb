@@ -10,11 +10,9 @@ module Chinjufu
     desc 'deploy', 'create/update stack'
     option '--template-file', type: :string
     def deploy
-      p options
-      logger = Chinjufu::Log.new(options['verbose'])
+      logger = Chinjufu::Log.new
       opt = load(options, true)
       return unless opt_validate(opt, logger)
-      puts 'exec deploy'
       exec_deploy(opt[:value], logger)
     end
 

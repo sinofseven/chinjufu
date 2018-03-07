@@ -1,7 +1,6 @@
 module Chinjufu
   class Log
-    def initialize(is_verbose, path: nil)
-      @is_verbose = is_verbose.nil? ? false : is_verbose
+    def initialize(path: nil)
       @pastel = Pastel.new
     end
 
@@ -12,7 +11,7 @@ module Chinjufu
     private 
     def fix_text(text, is_cfn)
       prefix = is_cfn ? "CloudFormation" : "Chinjufu"
-      return @is_verbose ? @pastel.yellow("#{prefix}: ") + text : text
+      return @pastel.yellow("#{prefix}: ") + text
     end
   end
 end
